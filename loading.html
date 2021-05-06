@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>圆形进度条</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="500" height="500"></canvas>
+</body>
+
+<script>
+    var cans = document.getElementById("canvas");
+    var ctx = cans.getContext("2d");
+    var speed = 0.01;
+    ctx.beginPath();
+    ctx.arc(150, 150, 100, 0, Math.PI * speed, false);
+    ctx.stroke();
+    function draw() {
+        cans.height = cans.height;
+        //ctx.clearRect(0, 0, 500, 500);
+        speed = speed + 0.01;
+        ctx.beginPath();
+        ctx.arc(150, 150, 89, Math.PI * (3 / 2), Math.PI * ((3 / 2) + speed), false);
+        ctx.strokeStyle = "red";
+        ctx.lineWidth = 10;
+        ctx.stroke();
+
+        // setTimeout(function () {
+        //     draw();
+        // }, 10);       
+        // setTimeout是延迟多少时间，再执行
+        if (speed > 2) {
+            cans.height = cans.height;
+            speed = 0.01;
+        }
+    }
+
+    //setInterval在指定的延时间隔重复执行
+    setInterval(function () {
+        draw();
+    }, 15);
+    //draw
+</script>
+
+</html>
